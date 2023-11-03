@@ -1,0 +1,578 @@
+@font-face{
+    font-family: 'Nunito Bold';
+    src: url(components/fonts/NunitoSans_10pt-Bold.ttf);
+
+}
+@font-face{
+    font-family: 'Nunito Medium';
+    src: url(components/fonts/NunitoSans_10pt-Medium.ttf);
+}
+
+@font-face{
+    font-family: 'Nunito Light';
+    src: url(components/fonts/NunitoSans_10pt-Light.ttf)
+}
+
+:root{
+    --elements: rgb(255, 255, 255);
+    --bg-color: hsl(0, 0%, 98%);
+    --fonts-color: hsl(200, 15%, 8%);
+    --lightInput:hsl(0, 0%, 52%);
+    --boxShadow: rgb(207, 207, 207);
+}
+
+[data-theme="dark"]{
+    --elements: hsl(209, 23%, 22%);
+    --bg-color:hsl(207, 26%, 17%);
+    --fonts-color: white;
+    --lightInput: hsl(0, 0%, 52%);
+    --boxShadow: hsl(207, 26%, 17%);;
+  }
+
+:root{
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+}
+
+.container{
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-color);
+    margin-top: -1rem;
+    flex: 1;
+}
+
+.app{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.earth_nations{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+    row-gap: 5rem;
+    column-gap: 5rem;
+    margin-top: 15rem;
+    margin-bottom: 7rem;
+}
+
+@media only screen and (max-width: 520px){
+    .container{
+        width: 100vw;
+        min-height: 100vh;
+        left: -.5rem;
+    }
+
+    .app{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        margin-right: .3rem;
+    }
+
+    .earth_nations{
+        grid-template-columns: 1fr;
+        margin-top: 17rem;
+        row-gap: 2rem;
+        column-gap: 2rem;
+    }
+}
+
+@media only screen and (max-width: 800px) and (orientation: landscape){
+    .container{
+        width: 100vw;
+        min-height: 100vh;
+        left: -.5rem;
+    }
+
+    .app{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        margin-right: .3rem;
+    }
+
+    .earth_nations{
+        grid-template-columns: 1fr 1fr;
+        margin-top: 20rem;
+        row-gap: 2rem;
+        column-gap: 2rem;
+    }
+}
+
+
+.country_card{
+    height: 335px;
+    width: 265px;
+    background-color: var(--elements);
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 0 5px 2px var(--boxShadow);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.flag{
+    width: 265px;height: 160px;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+}
+
+.country_info{
+    margin-left: 25px;
+}
+
+.name{
+    font-size: 1.2rem;
+    font-family: 'Nunito Bold';
+    color: var(--fonts-color);
+    margin-bottom: -2px;
+}
+
+#nunya{
+    margin-bottom: -8px;
+}
+
+.nunya_boldish{
+    font-family: 'Nunito Medium';
+    color: var(--fonts-color);
+}
+
+.nunya_light{
+    font-family: 'Nunito Light';
+    color: var(--fonts-color);
+}
+
+.region_selector{
+    position: absolute;
+    right: 8.6rem;
+    z-index: 5;
+    top: 8rem;
+}
+
+.select_region{
+    position: relative;
+    width: 200px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    box-shadow: 0 0 5px 2px var(--boxShadow);
+    font-family: 'Nunito Light';
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--fonts-color);
+}
+
+.pointer{
+    transition: all ease-in-out 0.3s;
+}
+
+.point_up{
+    transition: all ease-in-out 0.3s;
+    transform: rotate(180deg);
+}
+
+.all_regions{
+    position: absolute;
+    transition: all ease-in-out 0.3s;
+    visibility: hidden;
+    z-index: 0;
+}
+
+.visible_regions{
+    opacity: 1;
+    transition: all ease-in-out 0.3s;
+    position: absolute;
+    width: 200px;
+    height: 165px;
+    margin-top: 3px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--elements);
+    box-shadow: 0 0 5px 2px var(--boxShadow);
+    z-index: 5;
+
+}
+
+.region_btn{
+    position: relative;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 20px;
+    border: none;
+    margin-top: 7px;
+    color: var(--fonts-color);
+    font-family: 'Nunito Light';
+}
+
+.region_btn:hover{
+    color: orange;
+}
+
+.header{
+    position: absolute;
+    width: 100vw;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--elements);
+    margin-top: .02rem;
+    top: 0;
+    left: -.5rem;
+    color: (var(--fonts-color));
+    box-shadow: 0 0 5px 2px var(--boxShadow);
+}
+
+.moon{
+    height: 1.2rem;
+    margin-right: 4px;
+}
+
+.theme_switcher{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 8rem;
+    font-family: 'Nunito Light';
+    cursor: pointer;
+    z-index: 90;
+    color: var(--fonts-color);
+}
+
+.where{
+    position: relative;
+    margin-left: 8.5rem;
+    font-family: 'Nunito Bold';
+    color: var(--fonts-color);
+}
+
+.searchForm{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 10rem;
+    width: 480px;
+    height: 58px;
+    background-color: var(--elements);
+    top: 8rem;
+    left: 9rem;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 2px var(--boxShadow);
+}
+
+form input{
+    border: none;
+    width: 480px;
+    margin-left: 4rem;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: var(--elements);
+    color: var(--lightInput);
+}
+
+form img{
+    position: absolute;
+    left: 1rem;
+    top: 1.1rem;
+    height: 1.8rem;
+}
+
+@media only screen and (max-width: 520px){
+    .theme_switcher{
+        margin-right: 1rem;
+    }
+
+    .where{
+        font-size: 9px;
+        font-family: 'Nunito Medium';
+        margin-left: 1rem;
+    }
+
+    .searchForm{
+        width: 380px;
+        height: 48px;
+        left: 1.28rem;
+        top: 7rem;
+    }
+
+    form input{
+        width: 250px;
+    }
+
+    form img{
+        top: .8rem;
+    }
+
+    .region_selector{
+        top: 12rem;
+        left: 4.6rem;
+    }
+
+    .select_region{
+        height: 45px;
+    }
+}
+
+@media only screen and (max-width: 800px) and (orientation: landscape){
+    .theme_switcher{
+        margin-right: 1rem;
+    }
+
+    .where{
+        font-size: 9px;
+        font-family: 'Nunito Medium';
+        margin-left: 1rem;
+    }
+
+    .searchForm{
+        width: 480px;
+        height: 48px;
+        left: 3rem;
+        top: 7rem;
+    }
+
+    form input{
+        width: 250px;
+    }
+
+    form img{
+        top: .8rem;
+    }
+
+    .region_selector{
+        top: 14rem;
+        left: 7rem;
+    }
+
+    .select_region{
+        height: 45px;
+    }
+}
+
+/* details page starts */
+
+.wrap-main{
+    position: absolute;
+}
+
+.details_main{
+    position: absolute;
+    left: 5rem;
+    top: 270px;
+    display: flex;
+    font-size: 15px;
+    font-family: 'Nunito Light';
+    color: var(--fonts-color);
+}
+
+.nunya_borders{
+    margin-right: 1rem;
+}
+
+.details_official{
+    margin-bottom: 2rem;
+    font-family: 'Nunito Bold';
+    font-size: 1.8rem;
+}
+
+.details_flag{
+    width: 560px;
+    height: 400px;
+    margin-right: 7rem;
+}
+
+.domain-languages{
+    max-width: 25rem;
+    margin-top: 5rem;
+    margin-left: 5rem;
+    margin-right: 1rem;
+}
+
+.theBorders{
+    min-width: 30rem;
+    max-width: 35rem;
+    position: absolute;
+    top: 22rem;
+    left: 42rem;
+}
+
+.native-borders{
+    position: relative;
+    max-width: 20rem;
+}
+
+.borderBtn{
+    background-color: var(--elements);
+    min-width: 90px;
+    max-width: 200px;
+    height: 40px;
+    font-family: 'Nunito Light';
+    margin-right: 8px;
+    margin-top: 8px;
+    z-index: 34;
+    cursor: pointer;
+    color: var(--fonts-color);
+}
+
+.borderBtn:hover{
+    background-color: orange;
+}
+
+.borderlessBtn{
+    border: none;
+    color: var(--fonts-color);
+    border-radius: 8px;
+}
+
+.backBtn{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    top: 11rem;
+    left: 5rem;
+    width: 137px;
+    height: 40px;
+    border-radius: 8px;
+    font-family: 'Nunito Light';
+    background-color: var(--elements);
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--fonts-color);
+    border: none;
+    box-shadow: 0 0 5px 2px var(--boxShadow);
+}
+
+.backBtn:hover{
+    background-color: orange;
+}
+
+.arrow{
+    height: 1.3rem;
+    color: white;
+    stroke: white;
+}
+
+@media only screen and (max-width: 520px){
+    .container{
+        min-height: 100vh;
+    }
+
+    .details_main{
+        flex-direction: column;
+        top: 13rem;
+        left: 1.2rem;
+        justify-content: center;
+    }
+
+    .native-borders{
+        left: 1rem;
+    }
+
+    .details_flag{
+        position: relative;
+        left: 1rem;
+        width: 350px;
+        height: 200px;
+    }
+
+    .theBorders{
+        position: relative;
+        top: -3rem;
+        left: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .domain-languages{
+        position: relative;
+        max-width: 20rem;
+        left: -4rem;
+        top: -3rem;
+    }
+
+    .borderBtn{
+        margin-top: 12px;
+    }
+
+    .borderlessBtn{
+        box-shadow: none;
+    }
+
+    .backBtn{
+        top: 7.3rem;
+        left: 2.2rem;
+    }
+}
+
+@media only screen and (max-width: 800px) and (orientation: landscape){
+    .details_main{
+        flex-direction: column;
+        top: 13rem;
+        left: 13rem;
+        justify-content: center;
+    }
+
+    .native-borders{
+        left: -7rem;
+    }
+
+    .details_flag{
+        position: relative;
+        left: -8.5rem;
+        width: 650px;
+        height: 500px;
+    }
+
+    .theBorders{
+        position: relative;
+        top: -13rem;
+        left: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .domain-languages{
+        position: relative;
+        max-width: 20rem;
+        left: 10rem;
+        top: -19rem;
+    }
+
+    .details_official{
+        min-width: 500px;
+    }
+
+    .borderBtn{
+        margin-top: 12px;
+        box-shadow: none;
+    }
+
+    .borderlessBtn{
+        box-shadow: none;
+    }
+
+    .backBtn{
+        top: 7.3rem;
+        left: 4.5rem;
+    }
+}
+
