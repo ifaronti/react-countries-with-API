@@ -46,6 +46,33 @@ export default function App(){
         setInputSearch(value)
     }
 
+    let themeSvg = 
+            <section className="moon">
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="26" 
+                    height="26">
+                        <path 
+                            fill={theme === 'light' ? "#676767": 'white'}
+                            fill-rule="evenodd" 
+                            d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"
+                        />
+                </svg>
+            </section>
+
+    let leftSvg = 
+        <section className="left">
+            <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="26" 
+                height="20" 
+                fill={theme === 'light' ? 'black':'white'} 
+                class="bi bi-arrow-left" viewBox="1 1 12 12">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+
+        </section>
+    
     function formSubmit(event){
         event.preventDefault()
         event.stopPropagation()
@@ -53,19 +80,19 @@ export default function App(){
     }
 
     let regions = 
-            <div className="region_selector">
-                <div onClick={()=> setSelector(prevSelector => !prevSelector)} className="select_region ">
+            <section className="region_selector">
+                <section onClick={()=> setSelector(prevSelector => !prevSelector)} className="select_region ">
                     <p>Filter by region</p> 
                     <p className={selector ? 'point_up pointer': 'pointer'}>^</p>
-                </div>
-                <div className= {selector ? 'visible_regions':  'all_regions' }>
+                </section>
+                <section className= {selector ? 'visible_regions':  'all_regions' }>
                     <button className="region_btn" onClick={()=>setSearch('region/Africa')}>Africa</button>
                     <button className="region_btn" onClick={()=> setSearch('region/America')}>America</button>
                     <button className="region_btn" onClick={()=> setSearch('region/Asia')}>Asia</button>
                     <button className="region_btn" onClick={()=> setSearch('region/Europe')}>Europe</button>
                     <button className="region_btn" onClick={()=> setSearch('region/Oceania')}>Oceania</button>
-                </div>
-            </div>
+                </section>
+            </section>
 
     let humanity = searchParam.map(country => {
         return (
@@ -88,6 +115,7 @@ export default function App(){
         let currency = Object.values(country.currencies).map(currency => {
             return currency.name
         })
+
         let borders = country.borders ? country.borders:['No Borders']
 
         let showBorders = countries.map(country => {
@@ -105,14 +133,14 @@ export default function App(){
         })
 
         let natives = nativeName.filter((name, index) => {
-            return index > 3 ? !name: name
+            return index > 2 ? !name: name
         })
 
         return(
             <Details
-            flag = {country.flags.png}
+                flag = {country.flags.png}
                 theme ={theme}
-                name ={country.name.common}
+                name ={country.name.official}
                 nativeName ={(natives).join(', ')}
                 population = {country.population}
                 region = {country.region}
@@ -136,29 +164,32 @@ export default function App(){
                         placeholder="search for a country..."
                         className= 'input darken'
                     />
-                    <img src={`${process.env.PUBLIC_URL}/assets/images/searchIcon.png`} alt="" />
+                    <img src={`${process.env.PUBLIC_URL}/assets/images/searchIcon.png`} alt="search icon" />
                 </form>
 
     return(
-        <div className="container">
-                <main className='header'>
-                    <section className="where"><h2>Where in the world?</h2></section>
+            <main className="app">
+                <section className='header'>
+                    <section className={page ? "where":'details_where'}><h2>Where in the world?</h2></section>
                     <section className="theme_switcher" onClick={()=>theme === 'light' ? setTheme('dark'):setTheme('light')}>
-                        <img className="moon" src={`${process.env.PUBLIC_URL}/assets/images/moon.svg`} alt="half moon" />
+                        {themeSvg}
                         <p>{theme === 'light' ? 'Dark Mode': 'Light Mode'}</p>
                     </section>
-                </main>
-            <div className="app">
+                </section>
                 {page && searchCountry}
                 {page && <section>{regions}</section>}
                 {!page && 
                 <section>
-                    <button className= "backBtn" onClick={()=>setPage(true)}>Back</button>
+                    <button 
+                        className= "backBtn" 
+                        onClick={()=>setPage(true)}>
+                        {leftSvg}
+                        Back
+                    </button>
                     {detailsPage}
                 </section>
                 }
-                {page && <div className="earth_nations">{humanity}</div>}
-            </div>
-        </div>
+                {page && <section className="earth_nations">{humanity}</section>}
+            </main>
     )
 }

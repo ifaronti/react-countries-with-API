@@ -29,31 +29,27 @@
     --boxShadow: hsl(207, 26%, 17%);;
   }
 
-:root{
-    display: flex;
-    align-items: center;
-    overflow-x: hidden;
-    width: 100vw;
-    min-height: 100vh;
+  html, body{
     background-color: var(--bg-color);
+    -webkit-overflow-scrolling: none;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
 }
 
-.container{
-    position: relative;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    background-color: var(--bg-color);
-    margin-top: -1rem;
-    flex: 1;
-}
+body::-webkit-scrollbar {
+    display: none;
+  }
 
 .app{
     position: relative;
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 100vw;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .earth_nations{
@@ -63,20 +59,26 @@
     column-gap: 5rem;
     margin-top: 15rem;
     margin-bottom: 7rem;
+    
 }
 
-@media only screen and (max-width: 520px){
-    .container{
-        width: 100vw;
-        min-height: 100vh;
-        left: -.5rem;
-    }
+@media only screen and (max-width: 520px) and (orientation: portrait){
+   html, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    scroll-behavior: smooth;
+   }
 
     .app{
+        position: relative;
         width: 100vw;
         display: flex;
         justify-content: center;
         margin-right: .3rem;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
     }
 
     .earth_nations{
@@ -87,11 +89,12 @@
     }
 }
 
-@media only screen and (max-width: 800px) and (orientation: landscape){
-    .container{
-        width: 100vw;
-        min-height: 100vh;
-        left: -.5rem;
+@media only screen and (min-width: 320px) and (max-width: 850px) and (orientation: landscape){
+    html, body{
+        margin: 0;
+        padding: 0;
+        box-sizing: content-box;
+        scroll-behavior: smooth;
     }
 
     .app{
@@ -99,6 +102,8 @@
         display: flex;
         justify-content: center;
         margin-right: .3rem;
+        margin: 0;
+        padding: 0;
     }
 
     .earth_nations{
@@ -166,6 +171,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--elements);
     gap: 3rem;
     box-shadow: 0 0 5px 2px var(--boxShadow);
     font-family: 'Nunito Light';
@@ -197,7 +203,7 @@
     position: absolute;
     width: 200px;
     height: 165px;
-    margin-top: 3px;
+    margin-top: 5px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -213,9 +219,9 @@
     background: none;
     cursor: pointer;
     font-size: 14px;
-    margin-left: 20px;
+    margin-left: 16px;
     border: none;
-    margin-top: 7px;
+    margin-top: 10px;
     color: var(--fonts-color);
     font-family: 'Nunito Light';
 }
@@ -234,14 +240,14 @@
     background-color: var(--elements);
     margin-top: .02rem;
     top: 0;
-    left: -.5rem;
     color: (var(--fonts-color));
     box-shadow: 0 0 5px 2px var(--boxShadow);
 }
 
 .moon{
-    height: 1.2rem;
-    margin-right: 4px;
+    position: relative;
+    top: .3rem;
+    margin-right: 5px;
 }
 
 .theme_switcher{
@@ -249,7 +255,8 @@
     display: flex;
     align-items: center;
     margin-right: 8rem;
-    font-family: 'Nunito Light';
+    right: .7rem;
+    font-family: 'Nunito Medium';
     cursor: pointer;
     z-index: 90;
     color: var(--fonts-color);
@@ -257,9 +264,16 @@
 
 .where{
     position: relative;
-    margin-left: 8.5rem;
+    left: 5.5rem;
+    margin-left: 3rem;
     font-family: 'Nunito Bold';
     color: var(--fonts-color);
+}
+
+.details_where{
+    color: var(--fonts-color);
+    position: relative;
+    margin-left: 4.5rem;
 }
 
 .searchForm{
@@ -271,7 +285,7 @@
     height: 58px;
     background-color: var(--elements);
     top: 8rem;
-    left: 9rem;
+    left: 8.6rem;
     border-radius: 5px;
     box-shadow: 0 0 5px 2px var(--boxShadow);
 }
@@ -294,26 +308,41 @@ form img{
     height: 1.8rem;
 }
 
-@media only screen and (max-width: 520px){
+@media only screen and (max-width: 520px) and (orientation: portrait){
+    .header{
+        width: 110vw;
+        box-sizing: content-box;
+        padding-right: 17px;
+        left: 0rem;
+        right: 0;
+        margin: 0;
+    }
+
     .theme_switcher{
-        margin-right: 1rem;
+        margin-right: 3rem;
     }
 
     .where{
+        left: 0;
         font-size: 9px;
         font-family: 'Nunito Medium';
+        margin-left: 1rem;
+    }
+
+    .details_where{
+        font-size: 13px;
         margin-left: 1rem;
     }
 
     .searchForm{
         width: 380px;
         height: 48px;
-        left: 1.28rem;
+        left: 1.5rem;
         top: 7rem;
     }
 
     form input{
-        width: 250px;
+        width: 370px;
     }
 
     form img{
@@ -322,7 +351,7 @@ form img{
 
     .region_selector{
         top: 12rem;
-        left: 4.6rem;
+        left: 5rem;
     }
 
     .select_region{
@@ -330,7 +359,7 @@ form img{
     }
 }
 
-@media only screen and (max-width: 800px) and (orientation: landscape){
+@media only screen and (min-width: 320px) and (max-width: 850px) and (orientation: landscape){
     .theme_switcher{
         margin-right: 1rem;
     }
@@ -338,6 +367,11 @@ form img{
     .where{
         font-size: 9px;
         font-family: 'Nunito Medium';
+        margin-left: 1rem;
+        left: 0;
+    }
+
+    .details_where{
         margin-left: 1rem;
     }
 
@@ -358,7 +392,7 @@ form img{
 
     .region_selector{
         top: 14rem;
-        left: 7rem;
+        left: 8.8rem;
     }
 
     .select_region{
@@ -370,6 +404,7 @@ form img{
 
 .wrap-main{
     position: absolute;
+    bottom: 4rem;
 }
 
 .details_main{
@@ -390,6 +425,12 @@ form img{
     margin-bottom: 2rem;
     font-family: 'Nunito Bold';
     font-size: 1.8rem;
+    width: 60rem;
+}
+
+.nativeName{
+    margin-top: 3;
+    height: auto;
 }
 
 .details_flag{
@@ -399,8 +440,10 @@ form img{
 }
 
 .domain-languages{
+    position: relative;
+    left: 22rem;
+    top: -27.9rem;
     max-width: 25rem;
-    margin-top: 5rem;
     margin-left: 5rem;
     margin-right: 1rem;
 }
@@ -416,19 +459,24 @@ form img{
 .native-borders{
     position: relative;
     max-width: 20rem;
+    height: 500px;
 }
 
 .borderBtn{
-    background-color: var(--elements);
+    background-color: (var(--elements));
     min-width: 90px;
     max-width: 200px;
-    height: 40px;
+    height: 30px;
     font-family: 'Nunito Light';
     margin-right: 8px;
     margin-top: 8px;
     z-index: 34;
     cursor: pointer;
     color: var(--fonts-color);
+    border: 2px solid;
+    border-color: beige;
+    /* box-shadow: 0 0 40px 2px var(--boxShadow); */
+    box-shadow: 0 0 5px 2px var(--boxShadow);
 }
 
 .borderBtn:hover{
@@ -438,7 +486,8 @@ form img{
 .borderlessBtn{
     border: none;
     color: var(--fonts-color);
-    border-radius: 8px;
+    border-radius: 1px;
+    background-color: var(--elements);
 }
 
 .backBtn{
@@ -446,7 +495,7 @@ form img{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 16px;
     top: 11rem;
     left: 5rem;
     width: 137px;
@@ -461,19 +510,20 @@ form img{
     box-shadow: 0 0 5px 2px var(--boxShadow);
 }
 
+.left{
+    position: relative;
+    top: .1rem;
+}
+
 .backBtn:hover{
     background-color: orange;
 }
 
-.arrow{
-    height: 1.3rem;
-    color: white;
-    stroke: white;
-}
 
-@media only screen and (max-width: 520px){
-    .container{
-        min-height: 100vh;
+
+@media only screen and (max-width: 520px) and (orientation: portrait){
+    .wrap-main{
+        margin-bottom: 4rem;
     }
 
     .details_main{
@@ -484,7 +534,13 @@ form img{
     }
 
     .native-borders{
+        height: auto;
         left: 1rem;
+    }
+
+    .nativeName{
+        height: auto;
+        margin-top: 3rem;
     }
 
     .details_flag{
@@ -494,27 +550,30 @@ form img{
         height: 200px;
     }
 
+    .domain-languages{
+        position: relative;
+        max-width: 20rem;
+        left: -4rem;
+        top: 2rem;
+    }
+
     .theBorders{
         position: relative;
-        top: -3rem;
+        top: 5rem;
         left: 1rem;
         display: flex;
         flex-direction: column;
     }
 
-    .domain-languages{
-        position: relative;
-        max-width: 20rem;
-        left: -4rem;
-        top: -3rem;
+    .details_official{
+        font-size: 1.3rem;
+        width: 22rem; 
+        margin-bottom: 2rem;
     }
 
     .borderBtn{
         margin-top: 12px;
-    }
-
-    .borderlessBtn{
-        box-shadow: none;
+        margin-bottom: 12px;
     }
 
     .backBtn{
@@ -523,56 +582,85 @@ form img{
     }
 }
 
-@media only screen and (max-width: 800px) and (orientation: landscape){
+@media only screen and (min-width: 320px) and (max-width: 850px) and (orientation: landscape){
+    .wrap-main{
+        bottom: 1rem;
+    }
+
     .details_main{
         flex-direction: column;
         top: 13rem;
-        left: 13rem;
+        left: 1.2rem;
         justify-content: center;
+        margin-bottom: 2rem;
     }
 
     .native-borders{
-        left: -7rem;
+        height: auto;
+        left: 1rem;
+    }
+
+    .native-domain{
+        position: absolute;
+        justify-content: center;
+        display: flex;
+        top: 20rem;
+        left: 6rem;
+        align-items: center;
     }
 
     .details_flag{
         position: relative;
-        left: -8.5rem;
-        width: 650px;
-        height: 500px;
+        left: 7rem;
+        width: 550px;
+        height: 300px;
     }
 
     .theBorders{
         position: relative;
-        top: -13rem;
-        left: 1rem;
-        display: flex;
-        flex-direction: column;
+        top: 23rem;
+        left: 7rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        /* flex-direction: column; */
+        margin-bottom: 2rem;
+        margin-top: 1rem;
     }
 
     .domain-languages{
-        position: relative;
-        max-width: 20rem;
-        left: 10rem;
-        top: -19rem;
+        position: absolute;
+        top: 5rem;
+        width: 18rem;
+        /* margin-top: 5rem; */
+        left: 19rem;
     }
 
+    .nativeName{
+        height: auto;
+        margin-top: 3rem;
+    }
     .details_official{
-        min-width: 500px;
+        min-width: 15rem;
+        max-width: 35rem;
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
     }
 
     .borderBtn{
+        position: relative;
+        top: -.5rem;
         margin-top: 12px;
-        box-shadow: none;
+        margin-bottom: 12px;
     }
 
     .borderlessBtn{
         box-shadow: none;
+        background-color: var(--elements);
     }
 
     .backBtn{
         top: 7.3rem;
-        left: 4.5rem;
+        left: 8rem;
     }
 }
 
