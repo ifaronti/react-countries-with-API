@@ -62,7 +62,7 @@ body::-webkit-scrollbar {
     
 }
 
-@media only screen and (max-width: 520px) and (orientation: portrait){
+@media only screen and (max-width: 700px){
    html, body{
     margin: 0;
     padding: 0;
@@ -89,7 +89,7 @@ body::-webkit-scrollbar {
     }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 850px) and (orientation: landscape){
+@media only screen and (min-width: 701px) and (max-width: 1200px){
     html, body{
         margin: 0;
         padding: 0;
@@ -105,7 +105,9 @@ body::-webkit-scrollbar {
         margin: 0;
         padding: 0;
     }
+}
 
+@media only screen and (min-width: 701px) and (max-width: 999.9px){
     .earth_nations{
         grid-template-columns: 1fr 1fr;
         margin-top: 20rem;
@@ -114,6 +116,23 @@ body::-webkit-scrollbar {
     }
 }
 
+@media only screen and (min-width: 1000px) and (max-width: 1439px){
+    .earth_nations{
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 20rem;
+        row-gap: 3rem;
+        column-gap: 3rem;
+    }
+}
+@media only screen and (min-width: 1440px) and (max-width: 1760px){
+    .earth_nations{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        margin-top: 20rem;
+        row-gap: 3rem;
+        column-gap: 3rem;
+    }
+
+}
 
 .country_card{
     height: 335px;
@@ -308,7 +327,7 @@ form img{
     height: 1.8rem;
 }
 
-@media only screen and (max-width: 520px) and (orientation: portrait){
+@media only screen and (max-width: 700px){
     .header{
         width: 110vw;
         box-sizing: content-box;
@@ -359,7 +378,7 @@ form img{
     }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 850px) and (orientation: landscape){
+@media only screen and (min-width: 701px) and (max-width: 1200px){
     .theme_switcher{
         margin-right: 1rem;
     }
@@ -434,6 +453,7 @@ form img{
 }
 
 .details_flag{
+    position: relative;
     width: 560px;
     height: 400px;
     margin-right: 7rem;
@@ -521,9 +541,10 @@ form img{
 
 
 
-@media only screen and (max-width: 520px) and (orientation: portrait){
+@media only screen and (max-width: 800px){
     .wrap-main{
         margin-bottom: 4rem;
+        min-height: 100vh;
     }
 
     .details_main{
@@ -545,7 +566,6 @@ form img{
 
     .details_flag{
         position: relative;
-        left: 1rem;
         width: 350px;
         height: 200px;
     }
@@ -582,15 +602,21 @@ form img{
     }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 850px) and (orientation: landscape){
+@media only screen and (min-width: 701px) and (max-width: 900px){
+    .details-section{
+        display: flex;
+        justify-content: center;
+    }
+
     .wrap-main{
-        bottom: 1rem;
+        bottom: 3rem;
+        min-height: 100vh;
     }
 
     .details_main{
         flex-direction: column;
         top: 13rem;
-        left: 1.2rem;
+        /* left: 1.2rem; */
         justify-content: center;
         margin-bottom: 2rem;
     }
@@ -664,3 +690,49 @@ form img{
     }
 }
 
+
+@media only screen and (min-width: 901px) and (max-width: 1400px){
+    .details-section{
+        display: flex;
+        justify-content: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .wrap-main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .details_main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .theBorders{
+        position: relative;
+        left: 10rem;
+        top: -20rem;
+    }
+
+    .details_flag{
+        position: relative;
+        left: 7.5rem;
+        width: 560px;
+        height: 400px;
+        margin-right: 0;
+    }
+
+    .domain-languages{
+        width: 18rem;
+        /* margin-top: 5rem; */
+    }
+
+    .native-borders{
+        left: 3rem;
+    }
+}

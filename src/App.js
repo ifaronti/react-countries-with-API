@@ -179,7 +179,7 @@ export default function App(){
                 {page && searchCountry}
                 {page && <section>{regions}</section>}
                 {!page && 
-                <section>
+                <section className="details-section">
                     <button 
                         className= "backBtn" 
                         onClick={()=>setPage(true)}>
