@@ -12,3 +12,7 @@
 
 # Links:
   - [Live Site](https://ifasrestcountries.netlify.app/)
+
+
+# Acknowledgment:
+  - [API](`https://restcountries.com`)
