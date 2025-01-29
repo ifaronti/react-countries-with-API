@@ -10,5 +10,5 @@
     - See hover and focus states for all interactive elements on the page
     - Bonus: Toggle the color scheme between light and dark mode
 
-  #Links:
-    - [Live Site](https://ifasrestcountries.netlify.app/)
+# Links:
+  - [Live Site](https://ifasrestcountries.netlify.app/)
